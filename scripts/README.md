@@ -1,0 +1,1 @@
+This folder contains reusable Python scripts for data cleaning, KPI calculation, database operations, and automation.

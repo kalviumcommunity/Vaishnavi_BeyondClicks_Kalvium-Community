@@ -48,6 +48,124 @@ The dashboard calculates the following business metrics:
 
 ---
 
+## Project Structure
+
+```text
+Beyond-Clicks/
+│
+├── data/
+│   ├── raw/
+│   └── processed/
+│
+├── notebooks/
+│
+├── scripts/
+│
+├── output/
+│
+├── venv/
+│
+├── .env
+├── .gitignore
+├── requirements.txt
+└── README.md
+```
+
+### Folder Description
+
+* **data/raw/** – Original marketing datasets received from different platforms.
+* **data/processed/** – Cleaned and transformed datasets used for analysis.
+* **notebooks/** – Jupyter notebooks for exploratory analysis and experimentation.
+* **scripts/** – Python scripts for data cleaning, KPI calculation, database operations, and automation.
+* **output/** – Generated reports, exported files, and visual outputs.
+* **venv/** – Python virtual environment (not committed to Git).
+* **requirements.txt** – List of project dependencies.
+* **.gitignore** – Files and folders excluded from version control.
+* **README.md** – Project documentation and setup instructions.
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone <repository-url>
+cd BeyondClicks
+```
+
+### 2. Create a virtual environment
+
+**Windows**
+
+```bash
+python -m venv venv
+```
+
+### 3. Activate the virtual environment
+
+**Windows Command Prompt**
+
+```bash
+venv\Scripts\activate
+```
+
+**Windows PowerShell**
+
+```powershell
+venv\Scripts\Activate.ps1
+```
+
+### 4. Install project dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+### 5.Configure environment variables
+
+Copy .env.example to .env and update the required configuration values.
+
+Example:
+DATABASE_NAME=marketing.db
+
+
+## Running the Analysis
+
+Run the data cleaning script:
+
+```bash
+python scripts/clean_data.py
+```
+
+Load the cleaned data into the SQLite database:
+
+```bash
+python scripts/load_database.py
+```
+
+Calculate campaign KPIs:
+
+```bash
+python scripts/calculate_kpis.py
+```
+
+Launch the Streamlit dashboard:
+
+```bash
+streamlit run app.py
+```
+
+If using Jupyter notebooks for exploratory analysis:
+
+```bash
+jupyter notebook notebooks/
+```
+
+---
+
+
 ## Expected Workflow
 
 1. Import marketing campaign CSV files.
