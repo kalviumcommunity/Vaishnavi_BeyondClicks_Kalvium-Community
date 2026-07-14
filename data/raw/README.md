@@ -1,0 +1,1 @@
+This folder contains the original marketing datasets collected from different platforms and should never be modified.
