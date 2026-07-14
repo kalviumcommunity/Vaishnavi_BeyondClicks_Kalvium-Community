@@ -1,16 +1,16 @@
 # Beyond Clicks – Marketing Campaign Activation Analytics Dashboard
 
+## Problem Statement
+
+A digital marketing team stores campaign impressions, click-through rates, and signup events across multiple tools, but leadership still lacks visibility into which campaigns generate meaningful downstream activation instead of vanity traffic.
+
+---
+
 ## Project Overview
 
 Beyond Clicks is a marketing analytics platform designed to help organizations evaluate digital marketing campaigns using meaningful business outcomes instead of vanity metrics. It consolidates campaign data from multiple CSV datasets—including impressions, clicks, signups, and activation events—into a centralized analytics dashboard.
 
 The platform automates data cleaning, KPI calculation, database storage, and visualization, enabling marketing teams and business leaders to identify which campaigns generate genuine customer activation and make informed marketing decisions.
-
----
-
-## Problem Statement
-
-A digital marketing team stores campaign impressions, click-through rates, and signup events across multiple tools, but leadership still lacks visibility into which campaigns generate meaningful downstream activation instead of vanity traffic.
 
 ---
 
@@ -194,3 +194,7 @@ jupyter notebook notebooks/
 | Backend Developer   | Data cleaning, database design, KPI calculation, SQL operations |
 | Frontend Developer  | Streamlit dashboard, interactive charts, user interface         |
 | Full Stack / DevOps | Project integration, testing, repository management, deployment |
+
+## Team Workflow
+
+The project follows a GitHub-based workflow using feature branches, GitHub Issues, Pull Requests, and Conventional Commit messages to ensure safe collaboration.
