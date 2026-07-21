@@ -1,8 +1,8 @@
 import os
-import json
-from datetime import datetime
-import pandas as pd
 import chardet
+import json
+import pandas as pd
+from datetime import datetime
 
 def validate_file_exists(filepath):
     """Check if file exists and is non-empty."""
@@ -44,13 +44,7 @@ def detect_encoding(filepath):
         result = chardet.detect(f.read(10000))
     
     encoding = result.get('encoding', 'utf-8')
-    confidence = result.get('confidence', 0.0)
-    
-    # Handle case where confidence or encoding is None
-    if encoding is None:
-        encoding = 'utf-8'
-    elif encoding.lower() == 'ascii':
-        encoding = 'utf-8'
+    confidence = result.get('confidence', 0)
     
     return encoding, f"Detected: {encoding} (confidence: {confidence:.1%})"
 
@@ -70,7 +64,7 @@ def capture_dataset_stats(filepath, df):
 def generate_intake_report(filepath, expected_columns):
     """Generate complete intake validation report."""
     report = {
-        'timestamp': datetime.now().isoformat(),
+        'timestamp': datetime.now().isoformat(timespec='seconds'),
         'filepath': filepath,
         'validations': {}
     }
@@ -84,52 +78,32 @@ def generate_intake_report(filepath, expected_columns):
     # Check format
     format_valid, msg = validate_file_format(filepath)
     report['validations']['format'] = msg
-    if not format_valid:
-        report['validations']['schema'] = "Skipped: invalid format"
-        report['validations']['encoding'] = "Skipped: invalid format"
-        os.makedirs('output', exist_ok=True)
-        with open('output/intake_report.json', 'w') as f:
-            json.dump(report, f, indent=2, default=str)
-        return report
     
-    try:
-        # Check encoding
-        encoding, encoding_msg = detect_encoding(filepath)
-        report['validations']['encoding'] = encoding_msg
-        
-        # Load data for remaining checks
-        extension = filepath.split('.')[-1].lower()
-        if extension == 'csv':
-            df = pd.read_csv(filepath, encoding=encoding)
-        elif extension == 'json':
-            df = pd.read_json(filepath)
-        elif extension == 'xlsx':
-            df = pd.read_excel(filepath)
-        else:
-            raise ValueError(f"Unsupported format: {extension}")
-        
-        # Check schema
-        schema_valid, msg = validate_schema(df, expected_columns)
-        report['validations']['schema'] = msg
-        
-        # Capture statistics
-        stats = capture_dataset_stats(filepath, df)
-        report['statistics'] = stats
-        
-    except Exception as e:
-        report['validations']['schema'] = f"Failed to load/parse file: {str(e)}"
-        if 'encoding' not in report['validations']:
-            report['validations']['encoding'] = f"Failed to detect encoding: {str(e)}"
+    # Load data for remaining checks
+    df = pd.read_csv(filepath)
+    
+    # Check schema
+    schema_valid, msg = validate_schema(df, expected_columns)
+    report['validations']['schema'] = msg
+    
+    # Check encoding
+    encoding, msg = detect_encoding(filepath)
+    report['validations']['encoding'] = msg
+    
+    # Capture statistics
+    stats = capture_dataset_stats(filepath, df)
+    report['statistics'] = stats
+    
+    # Ensure output directory exists
+    os.makedirs('output', exist_ok=True)
     
     # Save report to file
-    os.makedirs('output', exist_ok=True)
     with open('output/intake_report.json', 'w') as f:
         json.dump(report, f, indent=2, default=str)
     
     return report
 
-if __name__ == '__main__':
-    # Default execution for the sample CSV
-    expected_cols = ['customer_id', 'customer_name', 'transaction_amount', 'transaction_date']
-    report = generate_intake_report('data/raw/sample.csv', expected_cols)
-    print("Intake report generated and saved to output/intake_report.json.")
+if __name__ == "__main__":
+    sample_file = "data/raw/sample.csv"
+    expected_cols = ["customer_id", "customer_name", "transaction_amount", "transaction_date"]
+    generate_intake_report(sample_file, expected_cols)
