@@ -1,0 +1,17 @@
+[
+    {
+        "Campaign_ID": "CMP001",
+        "Platform": "Instagram",
+        "Revenue": 12000
+    },
+    {
+        "Campaign_ID": "CMP002",
+        "Platform": "Facebook",
+        "Revenue": 9000
+    },
+    {
+        "Campaign_ID": "CMP003",
+        "Platform": "Google",
+        "Revenue": 18000
+    }
+]
