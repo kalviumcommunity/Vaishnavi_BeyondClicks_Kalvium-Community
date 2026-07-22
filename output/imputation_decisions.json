@@ -1,0 +1,26 @@
+{
+    "Revenue": {
+        "Strategy": "Median",
+        "Reason": "Revenue is a numerical business metric. Median is used because it is not affected by unusually high or low campaign revenue values."
+    },
+    "Platform": {
+        "Strategy": "Mode",
+        "Reason": "Platform is categorical. Missing values are replaced with the most frequently used platform."
+    },
+    "Campaign_Type": {
+        "Strategy": "Mode",
+        "Reason": "Campaign type is categorical, so the most common campaign type preserves the existing distribution."
+    },
+    "Language": {
+        "Strategy": "Mode",
+        "Reason": "Language is categorical. Filling with the most common language keeps the dataset consistent."
+    },
+    "Engagement_Score": {
+        "Strategy": "Median",
+        "Reason": "Engagement Score is numerical. Median prevents extreme values from affecting the imputed result."
+    },
+    "Campaign_ID": {
+        "Strategy": "Drop Rows",
+        "Reason": "Campaign_ID is a unique identifier and should never be guessed or imputed. Records with missing Campaign_ID are removed."
+    }
+}

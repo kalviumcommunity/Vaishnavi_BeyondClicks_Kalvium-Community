@@ -1,0 +1,9 @@
+Campaign_ID,Campaign_Type,Platform,Revenue,Language,Engagement_Score
+CMP001,Social Media,Instagram,12000.0,English,85.5
+CMP002,Paid Ads,Facebook,10500.0,Hindi,78.2
+CMP003,Email,Instagram,8500.0,English,82.75
+CMP004,Influencer,YouTube,15000.0,English,91.4
+CMP005,Social Media,Instagram,10500.0,Hindi,88.1
+CMP006,Email,Google,9500.0,English,80.0
+CMP007,Paid Ads,Facebook,11200.0,English,76.3
+CMP008,Email,Instagram,9800.0,Hindi,82.75
