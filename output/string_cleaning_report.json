@@ -1,0 +1,18 @@
+{
+    "Campaign_ID": {
+        "before_unique": 8,
+        "after_unique": 8
+    },
+    "Campaign_Type": {
+        "before_unique": 8,
+        "after_unique": 8
+    },
+    "Platform": {
+        "before_unique": 8,
+        "after_unique": 7
+    },
+    "Language": {
+        "before_unique": 6,
+        "after_unique": 6
+    }
+}
