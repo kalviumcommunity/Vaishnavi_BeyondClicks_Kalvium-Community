@@ -1,0 +1,7 @@
+customer_id,customer_name,email,signup_date,order_id,order_date,amount
+101,Alice Smith,alice@example.com,2023-01-15,1001.0,2023-06-01,150.5
+101,Alice Smith,alice@example.com,2023-01-15,1002.0,2023-06-15,200.0
+102,Bob Jones,bob@example.com,2023-02-20,1003.0,2023-06-10,75.25
+103,Charlie Brown,charlie@example.com,2023-03-10,1004.0,2023-06-12,310.0
+104,Diana Prince,diana@example.com,2023-04-05,,,
+105,Evan Wright,evan@example.com,2023-05-12,,,
