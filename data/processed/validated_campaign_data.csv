@@ -1,0 +1,3 @@
+Campaign_ID,Campaign_Type,Platform,Revenue,ROI,Engagement_Score,Language,Date,valid_revenue,valid_engagement,valid_roi,valid_date,valid_campaign_id,valid_platform,valid_campaign_type,valid_language,valid_campaign_format,valid_business,passes_all_checks
+CMP001,Social Media,Instagram,12000,6.5,85.5,English,29-04-2025,True,True,True,True,True,True,True,True,True,True,True
+CMP006,Influencer,Google,10000,4.7,75.0,English,15-03-2025,True,True,True,True,True,True,True,True,True,True,True

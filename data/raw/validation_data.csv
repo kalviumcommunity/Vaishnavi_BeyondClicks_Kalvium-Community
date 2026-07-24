@@ -1,0 +1,7 @@
+Campaign_ID,Campaign_Type,Platform,Revenue,ROI,Engagement_Score,Language,Date
+CMP001,Social Media,Instagram,12000,6.5,85.5,English,29-04-2025
+CMP002,Paid Ads,Facebook,-500,4.2,78.2,Hindi,06-04-2025
+CMP003,Email,,8500,3.5,110,English,14-01-2025
+CMP004,,YouTube,15000,-2.0,91.4,,04-06-2025
+CMP005,Social Media,Instagram,9500,5.8,88.1,Hindi,31-02-2025
+CMP006,Influencer,Google,10000,4.7,75.0,English,15-03-2025
