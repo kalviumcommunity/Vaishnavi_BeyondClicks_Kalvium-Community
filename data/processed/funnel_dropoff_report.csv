@@ -1,0 +1,4 @@
+From_Stage,To_Stage,Users_Before,Users_After,Users_Lost,Completion_Rate,Drop_Rate
+Impressions,Clicks,405000,37250,367750,9.2,90.8
+Clicks,Signups,37250,8400,28850,22.55,77.45
+Signups,Activations,8400,5150,3250,61.31,38.69
