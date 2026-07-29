@@ -1,0 +1,9 @@
+Campaign_ID,Campaign_Type,Platform,Impressions,Clicks,Signups,Activations
+CMP001,Social Media,Instagram,50000,5000,1000,600
+CMP002,Paid Ads,Facebook,60000,4800,900,450
+CMP003,Email,Google,40000,6000,1500,1000
+CMP004,Influencer,YouTube,55000,4400,1100,700
+CMP005,Social Media,Instagram,45000,3600,800,500
+CMP006,Paid Ads,Facebook,70000,4200,700,300
+CMP007,Email,Google,35000,5250,1400,950
+CMP008,Influencer,YouTube,50000,4000,1000,650

@@ -1,0 +1,56 @@
+BEYOND CLICKS FUNNEL ANALYSIS
+============================================================
+
+FUNNEL STAGES
+Impressions: 405,000
+Clicks: 37,250
+Signups: 8,400
+Activations: 5,150
+
+DROP-OFF ANALYSIS
+ From_Stage    To_Stage  Users_Before  Users_After  Users_Lost  Completion_Rate  Drop_Rate
+Impressions      Clicks        405000        37250      367750             9.20      90.80
+     Clicks     Signups         37250         8400       28850            22.55      77.45
+    Signups Activations          8400         5150        3250            61.31      38.69
+
+BUSINESS IMPACT
+            Drop_Point  Users_Lost  Revenue_Impact Priority
+ Impressions -> Clicks      367750        36775000     HIGH
+     Clicks -> Signups       28850         2885000     HIGH
+Signups -> Activations        3250          325000     HIGH
+
+RECOMMENDATION
+
+BEYOND CLICKS FUNNEL OPTIMIZATION
+
+BIGGEST BOTTLENECK:
+Impressions -> Clicks
+
+Users Lost:
+367,750
+
+Estimated Business Impact:
+$36,775,000
+
+Priority:
+HIGH
+
+RECOMMENDED ACTION:
+
+1. Investigate why users are dropping at this stage.
+2. Check campaign landing pages and user experience.
+3. Check whether the signup-to-activation journey is too complex.
+4. Test a simplified conversion flow using A/B testing.
+5. Monitor the activation rate after the change.
+
+SUCCESS CRITERIA:
+
+Improve the completion rate at the bottleneck stage by at least 10%.
+
+EXPECTED IMPACT:
+
+A 10% recovery of the lost users could produce approximately
+36,775 additional conversions.
+
+Estimated additional business value:
+$3,677,500
