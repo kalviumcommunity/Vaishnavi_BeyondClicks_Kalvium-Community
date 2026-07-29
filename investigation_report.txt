@@ -1,0 +1,31 @@
+
+===================================================================
+ROOT CAUSE INVESTIGATION REPORT
+
+OBSERVATION:
+- Revenue dropped 50% on 2025-05-20
+- Timeline: 14:00-15:00 UTC (60 minute window)
+- Scope: Enterprise and SMB customers (Startup unaffected)
+
+ANALYSIS:
+- Payment failures: Credit card (100% failure) vs Debit (0%)
+- Error logs: "Stripe API timeout" in 95% of failures
+- External check: Stripe status page shows outage 14:15-14:45
+
+HYPOTHESIS (Confidence: HIGH):
+Stripe (credit card processor) experienced a 30-minute outage affecting all credit card transactions globally. Other payment methods (debit, crypto) unaffected. Outage window matches Stripe public status report.
+
+ROOT CAUSE: External payment processor failure, not product bug
+
+RECOMMENDED ACTIONS:
+1. Add redundant payment processor (Adyen) for credit cards
+2. Implement automatic failover in < 30 seconds
+3. Monitor payment processor health with automated alerts
+4. Reduce impact from 50% revenue loss to < 5% with redundancy
+
+ESTIMATED IMPACT:
+- Outage frequency: ~1x per year (based on Stripe SLA)
+- Current impact: ~$500k revenue loss per outage
+- With redundancy: ~$25k revenue loss (5% leakage during failover)
+- Savings: ~$475k per year
+===================================================================
