@@ -1,0 +1,16 @@
+customer_id,customer_type,order_count,total_spent
+C006,Enterprise,2,15500
+C014,Enterprise,2,15500
+C010,Enterprise,2,15000
+C008,Enterprise,2,13500
+C002,Enterprise,2,11500
+C004,Enterprise,2,11500
+C001,Enterprise,2,8500
+C012,Enterprise,1,5000
+C003,SMB,1,1200
+C009,SMB,1,1100
+C007,SMB,1,900
+C005,SMB,1,800
+C015,SMB,1,700
+C011,SMB,0,0
+C013,SMB,0,0
