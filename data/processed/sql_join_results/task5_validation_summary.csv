@@ -1,0 +1,5 @@
+table,rows,key,role
+customers,15,customer_id,Primary customer table
+orders,21,customer_id,Customer orders
+order_items,21,order_id,Order line items
+products,5,product_id,Product information

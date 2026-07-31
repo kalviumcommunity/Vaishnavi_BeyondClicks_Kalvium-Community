@@ -1,0 +1,16 @@
+customer_id,customer_type,order_id,order_date,product_id,product_name,quantity,unit_price,line_total
+C014,Enterprise,O019,2024-05-10,P003,Marketing Automation,1,6500,6500
+C014,Enterprise,O018,2024-04-15,P001,Analytics Dashboard,1,9000,9000
+C010,Enterprise,O016,2024-04-10,P002,Campaign Manager,1,7000,7000
+C008,Enterprise,O013,2024-03-25,P004,Customer Insights,1,6000,6000
+C006,Enterprise,O010,2024-03-20,P002,Campaign Manager,1,6500,6500
+C012,Enterprise,O017,2024-03-20,P004,Customer Insights,1,5000,5000
+C010,Enterprise,O015,2024-03-15,P001,Analytics Dashboard,1,8000,8000
+C004,Enterprise,O007,2024-03-10,P003,Marketing Automation,1,5500,5500
+C008,Enterprise,O012,2024-02-25,P003,Marketing Automation,1,7500,7500
+C002,Enterprise,O004,2024-02-20,P001,Analytics Dashboard,1,4500,4500
+C001,Enterprise,O002,2024-02-15,P002,Campaign Manager,1,3500,3500
+C006,Enterprise,O009,2024-02-15,P001,Analytics Dashboard,1,9000,9000
+C004,Enterprise,O006,2024-01-25,P002,Campaign Manager,1,6000,6000
+C002,Enterprise,O003,2024-01-20,P003,Marketing Automation,1,7000,7000
+C001,Enterprise,O001,2024-01-10,P001,Analytics Dashboard,1,5000,5000
