@@ -1,10 +1,21 @@
+import os
+import sys
 import unittest
 import importlib
 import pandas as pd
 from sqlalchemy import inspect
 
+# Ensure root directory is in sys.path
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 # Import from assignment-33-python dynamically due to hyphen in filename
 assignment = importlib.import_module("assignment-33-python")
+
+def setUpModule():
+    """Ensure database, views, and pre-aggregated tables are initialized."""
+    assignment.main()
 
 class TestDataLayer(unittest.TestCase):
 
