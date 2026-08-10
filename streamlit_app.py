@@ -20,6 +20,22 @@ st.set_page_config(
     layout="wide"
 )
 
+# =========================================================
+# SESSION STATE INITIALIZATION
+# =========================================================
+
+# Stores the user's selected minimum order amount
+# so the filter survives Streamlit reruns.
+if "selected_min_order_amount" not in st.session_state:
+    st.session_state["selected_min_order_amount"] = None
+
+# Tracks which analytics workflow step is completed.
+if "analytics_workflow_step" not in st.session_state:
+    st.session_state["analytics_workflow_step"] = 1
+
+# Stores the calculated revenue from the confirmed filter.
+if "filtered_analysis_revenue" not in st.session_state:
+    st.session_state["filtered_analysis_revenue"] = 0.0
 
 # =========================================================
 # LOAD DEFAULT BEYONDCLICKS DATA
@@ -238,15 +254,23 @@ elif page == "Trends":
     max_amount = float(df["amount"].max())
 
 
+   # =========================================================
+    # PERSISTENT ORDER AMOUNT FILTER
+    # =========================================================
+
+    if st.session_state["selected_min_order_amount"] is None:
+        st.session_state["selected_min_order_amount"] = min_amount
+
     amount_range = st.sidebar.slider(
         "Minimum Order Amount",
         min_value=min_amount,
         max_value=max_amount,
-        value=min_amount,
-        step=1.0,
-        key="trend_slider"
+        value=st.session_state["selected_min_order_amount"],
+        step=1.0
     )
 
+    # Save the user's selection in session state
+    st.session_state["selected_min_order_amount"] = amount_range
 
     # -----------------------------------------------------
     # FILTER DATA
@@ -795,14 +819,6 @@ elif page == "Upload Dataset":
             )
 
             st.stop()
-        # =================================================
-        # TASK 2 - DATASET SUMMARY
-        # =================================================
-
-        st.divider()
-
-        st.header("Dataset Preview")
-
 
         # -------------------------------------------------
         # ROWS / COLUMNS / NULL %
@@ -1106,8 +1122,132 @@ elif page == "Upload Dataset":
                 "Upload a dataset containing numeric "
                 "columns to enable quick visualization."
             )
+# =========================================================
+# MULTI-STEP ANALYTICS WORKFLOW
+# =========================================================
 
+# This workflow is used on the Trends page because
+# filtered_df is created there.
 
+if page == "Trends":
+
+    st.divider()
+
+    st.header("Analytics Workflow")
+
+    # =====================================================
+    # STEP 1 - CONFIRM FILTER
+    # =====================================================
+
+    st.subheader("Step 1: Confirm Order Filter")
+
+    # Read the persisted minimum order amount.
+    # This value survives Streamlit reruns.
+    selected_amount = st.session_state[
+        "selected_min_order_amount"
+    ]
+
+    st.write(
+        f"Current minimum order amount: "
+        f"${selected_amount:,.2f}"
+    )
+
+    if st.button("Confirm Filter"):
+
+        # Move the workflow to Step 2.
+        st.session_state[
+            "analytics_workflow_step"
+        ] = 2
+
+        # Store the calculated revenue so it
+        # persists across Streamlit reruns.
+        st.session_state[
+            "filtered_analysis_revenue"
+        ] = filtered_df["amount"].sum()
+
+        st.success(
+            "Order filter confirmed successfully!"
+        )
+
+    # =====================================================
+    # STEP 2 - FILTERED ANALYSIS
+    # =====================================================
+
+    if st.session_state[
+        "analytics_workflow_step"
+    ] >= 2:
+
+        st.subheader("Step 2: Filtered Analysis")
+
+        # Read the selected filter from session state.
+        selected_amount = st.session_state[
+            "selected_min_order_amount"
+        ]
+
+        st.write(
+            f"Analysing orders with amount ≥ "
+            f"${selected_amount:,.2f}"
+        )
+
+        # Read the stored revenue result.
+        analysis_revenue = st.session_state[
+            "filtered_analysis_revenue"
+        ]
+
+        # Calculate the number of filtered orders.
+        analysis_orders = len(filtered_df)
+
+        # Calculate average order value.
+        if not filtered_df.empty:
+            analysis_aov = filtered_df["amount"].mean()
+        else:
+            analysis_aov = 0
+
+        # -------------------------------------------------
+        # ANALYSIS METRICS
+        # -------------------------------------------------
+
+        col1, col2, col3 = st.columns(3)
+
+        with col1:
+            st.metric(
+                "Analysis Revenue",
+                f"${analysis_revenue:,.2f}"
+            )
+
+        with col2:
+            st.metric(
+                "Analysis Orders",
+                f"{analysis_orders:,}"
+            )
+
+        with col3:
+            st.metric(
+                "Analysis AOV",
+                f"${analysis_aov:,.2f}"
+            )
+
+    # =====================================================
+    # RESET WORKFLOW
+    # =====================================================
+
+    if st.sidebar.button("Reset Workflow"):
+
+        # Clear only the session state values
+        # belonging to this analytics workflow.
+        for key in [
+            "selected_min_order_amount",
+            "analytics_workflow_step",
+            "filtered_analysis_revenue"
+        ]:
+
+            if key in st.session_state:
+                del st.session_state[key]
+
+        # Rerun the application so the default
+        # session state values are recreated.
+        st.rerun()
+        
         # =================================================
         # DOWNLOAD UPLOADED DATA
         # =================================================
